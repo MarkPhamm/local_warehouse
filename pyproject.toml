@@ -2,13 +2,14 @@
 name = "local-elt-pipeline"
 version = "0.1.0"
 description = "Simple local ELT pipeline with dlt, dbt, DuckDB, Prefect, and Evidence"
-requires-python = ">=3.9.2"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "dlt[duckdb]>=1.17.0",
     "prefect>=2.14.0",
     "requests>=2.31.0",
     "urllib3>=2.0.0",
     "dbt-duckdb>=1.7.0",
+    "visivo>=0.10.0",
 ]
 
 [build-system]
