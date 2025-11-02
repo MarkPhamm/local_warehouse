@@ -362,11 +362,3 @@ uv run ruff format .
 ```text
 .github/workflows/lint.yml
 ```
-
-### 11.3 Workflow Status URL
-
-Replace `your-username` and `repo-name`:
-
-```
-https://github.com/your-username/repo-name/actions/workflows/lint.yml
-```
