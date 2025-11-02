@@ -1,7 +1,7 @@
 [project]
 name = "local-elt-pipeline"
 version = "0.1.0"
-description = "Simple local ELT pipeline with dlt, dbt, DuckDB, Prefect, and Evidence"
+description = "Local-first ELT pipeline for CFPB consumer complaints: extract with dlt, transform with dbt, analyze with DuckDB, orchestrate with Prefect, and visualize with Visivo—all running locally with zero cloud dependencies"
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "dlt[duckdb]>=1.17.0",
