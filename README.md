@@ -1,7 +1,6 @@
-# local_elt_pipeline
+# Local ELT pipeline
 
 A local-first ELT pipeline that extracts CFPB consumer complaint data, transforms it with dbt into analytics-ready models, and serves interactive dashboards—all running on your laptop with zero cloud dependencies.
-<img width="1200" height="500" alt="image" src="https://github.com/user-attachments/assets/a8752180-63af-4f0a-8e0e-a973188651ed" />
 
 * **Package Manager**: uv (Python)
 * **Ingestion**: dlt
@@ -9,6 +8,8 @@ A local-first ELT pipeline that extracts CFPB consumer complaint data, transform
 * **OLAP Database**: DuckDB
 * **Orchestration**: Prefect
 * **BI Tool**: Visivo
+
+<img src="https://github.com/user-attachments/assets/1b4e8d7b-0527-4fdc-b104-562cf0c3efa6" alt="Architecture Diagram" style="width: 100%; height: auto;" />
 
 ## 1. Quick Start
 
