@@ -70,6 +70,7 @@ duckdb -ui
 ```
 We need to add in our database path as follow:
 <img width="2566" height="1352" alt="image" src="https://github.com/user-attachments/assets/0167dae6-0e77-42b9-ae4f-09bfe2490b5c" />
+<img width="2554" height="1353" alt="image" src="https://github.com/user-attachments/assets/743c707f-d2a4-4fe4-a76e-829a88c6a3ec" />
 
 Additional docs: [DuckDB UI Documentation](https://duckdb.org/docs/api/cli/ui)
 
