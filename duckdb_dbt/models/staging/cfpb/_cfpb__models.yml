@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_cfpb__complaints
+    description: Staged CFPB complaints with cleaned and standardized column names
+    columns:
+      - name: complaint_id
+        description: Unique identifier for each complaint
+        tests:
+          - unique
+          - not_null
+      - name: product
+        description: The type of financial product involved in the complaint
+      - name: sub_product
+        description: The specific sub-category of the financial product
+      - name: issue
+        description: The issue the consumer identified in the complaint
+      - name: sub_issue
+        description: The sub-issue that can provide more specificity on the reason for the complaint
+      - name: company
+        description: The company the consumer complaint was sent to
+      - name: state
+        description: Two-letter postal abbreviation of the state of the consumer
+      - name: zip_code
+        description: The mailing ZIP code provided by the consumer
+      - name: date_received
+        description: The date the complaint was received by the CFPB
+      - name: date_sent_to_company
+        description: The date the CFPB sent the complaint to the company
+      - name: company_response
+        description: How the company responded to the complaint
+      - name: timely
+        description: Whether the company's response was timely
+      - name: consumer_disputed
+        description: Whether the consumer disputed the company's response

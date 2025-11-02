@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw CFPB complaints data loaded via dlt
+    schema: raw
+    tables:
+      - name: cfpb_complaints
+        description: Consumer Financial Protection Bureau complaints
+        columns:
+          - name: complaint_id
+            description: Unique identifier for the complaint
+            tests:
+              - unique
+              - not_null

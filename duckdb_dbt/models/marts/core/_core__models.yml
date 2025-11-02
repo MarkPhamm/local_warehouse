@@ -1,0 +1,157 @@
+version: 2
+
+models:
+  - name: fct_complaints
+    description: Fact table containing detailed complaint records with metrics
+    columns:
+      - name: complaint_id
+        description: Unique identifier for each complaint
+        tests:
+          - unique
+          - not_null
+      - name: days_to_response
+        description: Number of days between complaint receipt and company response
+      - name: is_timely_response
+        description: Boolean flag indicating if the company response was timely
+      - name: is_disputed
+        description: Boolean flag indicating if the consumer disputed the response
+      - name: has_narrative
+        description: Boolean flag indicating if the complaint includes a narrative
+
+  - name: dim_companies
+    description: Dimension table with company-level complaint statistics
+    columns:
+      - name: company
+        description: Company name
+        tests:
+          - unique
+          - not_null
+      - name: total_complaints
+        description: Total number of complaints received by the company
+      - name: disputed_complaints
+        description: Number of complaints disputed by consumers
+      - name: pct_disputed
+        description: Percentage of complaints that were disputed
+      - name: avg_days_to_response
+        description: Average number of days to respond to complaints
+
+  - name: agg_complaints_by_month
+    description: Monthly aggregated complaint metrics for trend analysis
+    columns:
+      - name: complaint_month_date
+        description: First day of the month
+        tests:
+          - unique
+          - not_null
+      - name: total_complaints
+        description: Total complaints received in the month
+      - name: unique_companies
+        description: Number of unique companies with complaints
+      - name: pct_timely
+        description: Percentage of timely responses
+      - name: avg_days_to_response
+        description: Average days to response for the month
+
+  - name: dim_products
+    description: Product dimension with hierarchical product/sub-product statistics
+    columns:
+      - name: product
+        description: Product category name
+        tests:
+          - not_null
+      - name: sub_product
+        description: Sub-product category (null for product-level rollups)
+      - name: total_complaints
+        description: Total complaints for this product/sub-product
+      - name: unique_companies
+        description: Number of unique companies for this product
+      - name: pct_disputed
+        description: Percentage of complaints disputed
+      - name: pct_timely
+        description: Percentage of timely responses
+      - name: avg_days_to_response
+        description: Average response time in days
+      - name: most_common_issue
+        description: Most frequently reported issue for this product
+      - name: most_complained_company
+        description: Company with most complaints for this product
+
+  - name: dim_issues
+    description: Issue dimension with hierarchical issue/sub-issue statistics
+    columns:
+      - name: issue
+        description: Issue category name
+        tests:
+          - not_null
+      - name: sub_issue
+        description: Sub-issue category (null for issue-level rollups)
+      - name: total_complaints
+        description: Total complaints for this issue/sub-issue
+      - name: unique_companies
+        description: Number of unique companies for this issue
+      - name: unique_products
+        description: Number of unique products for this issue
+      - name: pct_disputed
+        description: Percentage of complaints disputed
+      - name: pct_timely
+        description: Percentage of timely responses
+      - name: avg_days_to_response
+        description: Average response time in days
+      - name: most_common_product
+        description: Most common product associated with this issue
+      - name: most_complained_company
+        description: Company with most complaints for this issue
+
+  - name: dim_states
+    description: Geographic dimension with state-level complaint statistics
+    columns:
+      - name: state
+        description: Two-letter state abbreviation
+        tests:
+          - unique
+          - not_null
+      - name: total_complaints
+        description: Total complaints from this state
+      - name: unique_companies
+        description: Number of unique companies complained about
+      - name: unique_products
+        description: Number of unique products complained about
+      - name: unique_zip_codes
+        description: Number of unique ZIP codes in this state
+      - name: pct_disputed
+        description: Percentage of complaints disputed
+      - name: pct_timely
+        description: Percentage of timely responses
+      - name: avg_days_to_response
+        description: Average response time in days
+      - name: most_common_product
+        description: Most commonly complained about product in this state
+      - name: most_common_issue
+        description: Most common issue in this state
+      - name: most_complained_company
+        description: Company with most complaints in this state
+      - name: most_common_submission_method
+        description: Most common way complaints are submitted
+
+  - name: dim_response_types
+    description: Company response type dimension with response outcome statistics
+    columns:
+      - name: company_response
+        description: Type of company response
+        tests:
+          - unique
+          - not_null
+      - name: total_complaints
+        description: Total complaints with this response type
+      - name: unique_companies
+        description: Number of companies using this response type
+      - name: pct_disputed
+        description: Percentage of complaints disputed for this response type
+      - name: pct_timely
+        description: Percentage of timely responses
+      - name: avg_days_to_response
+        description: Average response time for this response type
+      - name: most_common_product
+        description: Most common product for this response type
+      - name: most_common_issue
+        description: Most common issue for this response type

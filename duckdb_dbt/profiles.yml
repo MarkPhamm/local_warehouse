@@ -1,0 +1,9 @@
+duckdb_dbt:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../database/cfpb_complaints.duckdb
+      threads: 1
+      schema: raw
+
+  target: dev
