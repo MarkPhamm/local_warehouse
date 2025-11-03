@@ -4,6 +4,8 @@ Complete guide for the CFPB consumer complaints data ingestion pipeline.
 
 ## 1. Overview
 
+<img src="../images/dlt.png" alt="dlt" style="width:100%">
+
 The ingestion pipeline extracts consumer complaint data from the CFPB API and loads it into DuckDB using dlt (data load tool). It supports incremental loading with automatic state management via Prefect orchestration.
 
 **Key Features:**

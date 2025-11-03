@@ -2,6 +2,8 @@
 
 ## 1. Overview
 
+<img src="../images/duckdb.png" alt="duckdb" style="width:100%">
+
 DuckDB is an in-process SQL OLAP (Online Analytical Processing) database management system used as the data warehouse for this project. It combines the portability of SQLite with the analytical performance of traditional data warehouses.
 
 **Key Features**:

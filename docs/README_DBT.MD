@@ -2,6 +2,8 @@
 
 ## 1. Overview
 
+<img src="../images/dbt.png" alt="dbt" style="width:100%">
+
 This project uses dbt (data build tool) to transform raw CFPB (Consumer Financial Protection Bureau) complaint data into structured, analysis-ready models. The transformation pipeline follows the medallion architecture pattern with three distinct layers: staging, intermediate, and marts.
 
 ## 2. Project Structure
