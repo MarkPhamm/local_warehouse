@@ -133,9 +133,7 @@ class CFPBAPIClient:
 
         try:
             logger.info(f"Fetching complaints from CFPB API with params: {params}")
-            response = self.session.get(
-                self.BASE_URL, params=params, timeout=self.timeout
-            )
+            response = self.session.get(self.BASE_URL, params=params, timeout=self.timeout)
             response.raise_for_status()
 
             data = response.json()
@@ -143,9 +141,7 @@ class CFPBAPIClient:
             # Handle different response formats
             if isinstance(data, list):
                 # Direct list format
-                logger.info(
-                    f"Successfully fetched {len(data)} complaints (direct list format)"
-                )
+                logger.info(f"Successfully fetched {len(data)} complaints (direct list format)")
             elif isinstance(data, dict) and "hits" in data:
                 # Nested dict format
                 hits = data.get("hits", {}).get("hits", [])
@@ -273,9 +269,7 @@ class CFPBAPIClient:
             date_received_min=date_min, date_received_max=date_max, **filters
         )
 
-    def get_complaints_last_n_days(
-        self, days: int = 1, **filters
-    ) -> list[dict[str, Any]]:
+    def get_complaints_last_n_days(self, days: int = 1, **filters) -> list[dict[str, Any]]:
         """
         Fetch complaints from the last N days.
 
