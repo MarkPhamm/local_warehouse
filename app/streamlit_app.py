@@ -1,5 +1,5 @@
 import streamlit as st
-from response_predictor import ResponsePredictor  # Simple import now
+from app.response_predictor import ResponsePredictor 
 
 # --- PAGE CONFIG ---
 st.set_page_config(
