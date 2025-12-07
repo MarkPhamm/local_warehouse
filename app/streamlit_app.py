@@ -5,7 +5,7 @@ from pathlib import Path
 
 # --- PAGE CONFIG ---
 st.set_page_config(
-    page_title="Consumer Complaint Predictor", 
+    page_title="Company Responses Predictor", 
     page_icon="⚖️", 
     layout="wide"
 )
