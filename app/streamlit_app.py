@@ -75,34 +75,41 @@ st.title("⚖️ Company Response Predictor")
 st.markdown("<p style='text-align: center; color: #bdc3c7;'>Predicting corporate responses using CatBoost</p>", unsafe_allow_html=True)
 st.write("---")
 
-# --- INPUT OPTIONS ---
-# (Ideally, replace these with dynamic loads from your database)
-product_opts = ['Checking or savings account', 'Credit card', 'Mortgage', 'Student loan', 'Vehicle loan', 'Debt collection'] 
-sub_product_opts = ['General-purpose credit card', 'Conventional home mortgage', 'Other', 'I do not know']
-issue_opts = ['Managing an account', 'Incorrect information on report', 'Trouble during payment process', 'Struggling to pay mortgage']
-company_opts = ['Bank of America', 'Wells Fargo', 'JPMorgan Chase', 'Equifax', 'Experian', 'Citibank']
-state_opts = ['CA', 'NY', 'TX', 'FL', 'IL', 'PA', 'OH', 'GA', 'NC', 'MI']
-submitted_via_opts = ['Web', 'Referral', 'Phone', 'Postal mail', 'Fax', 'Email']
-consent_opts = ['Consent provided', 'Consent not provided', 'Consent withdrawn', 'N/A', 'Other']
+# --- INPUT + LOAD OPTIONS ---
+@st.cache_data
+def load_options():
+    options_path = Path(__file__).parent.parent / "src" / "models" / "options.json"
+    
+    with open(options_path, "r") as f:
+        options = json.load(f)
+    return options
 
-# --- FORM ---
+try:
+    options = load_options()
+except FileNotFoundError:
+    st.error("Could not find 'options.json'. Please run 'extract_options.py' first.")
+    st.stop()
+
+# --- INPUT FORM ---
+st.markdown("## Submit a Complaint Detail")
+
 with st.form(key='prediction_form'):
     col1, col2 = st.columns(2)
 
     with col1:
         with st.container(border=True):
             st.subheader("📝 Complaint Details")
-            product = st.selectbox('Product Category', options=product_opts)
-            sub_product = st.selectbox('Sub-Product', options=sub_product_opts)
-            issue = st.selectbox('Specific Issue', options=issue_opts)
-            submitted_via = st.selectbox('Submission Channel', options=submitted_via_opts)
+            product = st.selectbox('Product Category', options=options.get('product', []))
+            sub_product = st.selectbox('Sub-Product', options=options.get('sub_product', []))
+            issue = st.selectbox('Specific Issue', options=options.get('issue', []))
+            submitted_via = st.selectbox('Submission Channel', options=options.get('submitted_via', []))
 
     with col2:
         with st.container(border=True):
             st.subheader("🏢 Company & Context")
-            company = st.selectbox('Company Name', options=company_opts)
-            state = st.selectbox('State', options=state_opts)
-            consent = st.selectbox('Consumer Consent', options=consent_opts)
+            company = st.selectbox('Company Name', options=options.get('company', []))
+            state = st.selectbox('State', options=options.get('state', []))
+            consent = st.selectbox('Consumer Consent', options=options.get('consumer_consent_provided', []))
 
     st.markdown("<br>", unsafe_allow_html=True)
     submit_button = st.form_submit_button(label='PREDICT RESPONSE')
