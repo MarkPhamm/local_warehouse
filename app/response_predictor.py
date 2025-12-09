@@ -16,9 +16,9 @@ class ResponsePredictor:
         self.load_artifacts()
 
     def load_artifacts(self):
-        """Load the trained CatBoost model, Preprocessor, and Label Encoder."""
+        """Load the trained XGBoost model, Preprocessor, and Label Encoder."""
         try:
-            self.model = joblib.load(self.base_path / "catboost.pkl")
+            self.model = joblib.load(self.base_path / "xgboost.pkl")
             self.preprocessor = joblib.load(self.base_path / "preprocessor.pkl")
             self.encoder = joblib.load(self.base_path / "target_label_encoder.pkl")
         except FileNotFoundError:
@@ -41,7 +41,7 @@ class ResponsePredictor:
         # 3. Predict
         prediction_index = self.model.predict(X_transformed)
         
-        # CatBoost clean up (handle nested arrays)
+        # XGBoost clean up (handle nested arrays)
         if isinstance(prediction_index, np.ndarray):
             prediction_index = prediction_index.ravel()
             

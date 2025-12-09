@@ -74,7 +74,7 @@ except Exception as e:
 
 # --- UI LAYOUT ---
 st.title("⚖️ Company Response Predictor")
-st.markdown("<p style='text-align: center; color: #bdc3c7;'>Predicting corporate responses using CatBoost</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #bdc3c7;'>Predicting corporate responses using XGBoost</p>", unsafe_allow_html=True)
 st.write("---")
 
 # --- INPUT + LOAD OPTIONS ---
