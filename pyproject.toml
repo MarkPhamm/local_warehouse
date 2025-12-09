@@ -18,6 +18,7 @@ dependencies = [
     "catboost>=1.2.8",
     "scikit-learn>=1.7.2",
     "category-encoders>=2.8.1",
+    "xgboost>=3.1.2",
 ]
 
 [build-system]
