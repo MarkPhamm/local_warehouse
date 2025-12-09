@@ -2,7 +2,7 @@
 
 ---
 
-## 🔵 1. Flow Entry  
+## 1. Flow Entry  
 **Function:** `cfpb_complaints_incremental_flow()`  
 **File:** `src/orchestration/cfpb_flows.py`
 
@@ -16,7 +16,7 @@ This is the main Prefect flow. It:
 
 ---
 
-## 🟣 2. Extract + Load (per company)
+## 2. Extract + Load (per company)
 
 **Task:** `extract_and_load_complaints_task()`  
 **File:** `src/orchestration/cfpb_flows.py`
@@ -43,7 +43,7 @@ This step handles **Extract → Load (EL)**.
 
 ---
 
-## 🟢 3. Update Incremental State
+## 3. Update Incremental State
 
 If all companies completed successfully:
 
@@ -56,14 +56,14 @@ Updates `pipeline_state.json`, enabling:
 
 ---
 
-## 🟡 4. Transform with dbt
+## 4. Transform with dbt
 
 **Task:** `run_dbt_models_task()`  
 **File:** `src/orchestration/cfpb_flows.py`
 
 Process SQL models by layers
 
-## 🟠 5. Test with dbt
+## 5. Test with dbt
 
 **Task:** `run_dbt_tests_task()`  
 **File:** `src/orchestration/cfpb_flows.py`
