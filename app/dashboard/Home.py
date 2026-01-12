@@ -7,7 +7,7 @@ st.set_page_config(page_title="CFPB Analysis", page_icon="🏦", layout="wide")
 apply_styling()
 
 # ==========================================
-# 🎨 GLOBAL VISUAL STYLING (CSS)
+# GLOBAL VISUAL STYLING (CSS)
 # ==========================================
 st.markdown(
     """
@@ -136,7 +136,7 @@ st.markdown(
 
 
 # ==========================================
-# 1️⃣ HERO SECTION
+# HERO SECTION
 # ==========================================
 st.markdown(
     """
@@ -177,7 +177,7 @@ st.markdown(
 
 
 # ==========================================
-# 2️⃣ CORE ANALYTICAL QUESTION
+# CORE ANALYTICAL QUESTION
 # ==========================================
 st.markdown(
     """
@@ -196,7 +196,7 @@ st.markdown(
 
 
 # ==========================================
-# 3️⃣ NAVIGATION CARDS (Replaces Expanders)
+# NAVIGATION CARDS (Replaces Expanders)
 # ==========================================
 # We use st.columns to create a grid layout for the cards
 col1, col2 = st.columns(2, gap="large")
@@ -269,7 +269,7 @@ with col2:
 
 
 # ==========================================
-# 4️⃣ FOOTER / INSTRUCTION
+# FOOTER / INSTRUCTION
 # ==========================================
 st.markdown(
     """
