@@ -200,7 +200,7 @@ This will install all required packages including:
 ### Step 3: Running the dashboard
 
 ```bash
-uv run streamlit run app/dashboard/Home.py
+uv run streamlit run app/dashboard1/Home.py
 ```
 
 The dashboard will open automatically in your default browser at `http://localhost:8501`
