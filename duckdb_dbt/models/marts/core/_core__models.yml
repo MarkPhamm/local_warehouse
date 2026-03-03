@@ -18,6 +18,63 @@ models:
       - name: has_narrative
         description: Boolean flag indicating if the complaint includes a narrative
 
+  - name: fact_complaints
+    description: BI-facing view alias for fct_complaints; use for interactive filters (Product, State, Time) and detail-level analysis
+
+  - name: issue_product_summary
+    description: Issue frequency by product; cross-tab for Heatmap (Issue × Product) and Treemap (issue frequency)
+    columns:
+      - name: issue
+        description: Issue category
+      - name: product
+        description: Product category
+      - name: complaint_count
+        description: Number of complaints for this issue-product pair
+      - name: pct_disputed
+        description: Percentage disputed for this pair
+      - name: pct_of_all_complaints
+        description: Share of total complaints
+
+  - name: issue_state_summary
+    description: Cross-tab Issue × State for state map and geographic filters
+    columns:
+      - name: issue
+        description: Issue category
+      - name: state
+        description: Two-letter state code
+      - name: complaint_count
+        description: Number of complaints for this issue-state pair
+      - name: pct_disputed
+        description: Percentage disputed
+      - name: pct_of_issue_complaints
+        description: Share of this issue's complaints in this state
+
+  - name: issue_growth_monthly
+    description: Issue volume by month with MoM and YoY growth rates for small multiples time-series
+    columns:
+      - name: issue
+        description: Issue category
+      - name: month_date
+        description: First day of month
+      - name: complaint_count
+        description: Complaints in month for this issue
+      - name: pct_change_mom
+        description: Percent change vs prior month
+      - name: pct_change_yoy
+        description: Percent change vs same month prior year
+
+  - name: issue_dispute_ratio
+    description: Percent disputed per issue for root cause and theme analysis
+    columns:
+      - name: issue
+        description: Issue category
+      - name: total_complaints
+        description: Total complaints for this issue
+      - name: disputed_count
+        description: Count disputed
+      - name: pct_disputed
+        description: Percentage disputed
+
   - name: dim_companies
     description: Dimension table with company-level complaint statistics
     columns:
